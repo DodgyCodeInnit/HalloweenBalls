@@ -1,8 +1,0 @@
-Model Information:
-* title:	Conial Hat 2
-* source:	https://sketchfab.com/3d-models/conial-hat-2-6c074397b9f24c2abe808d6610d2a21f
-* author:	nhattien.vhv (https://sketchfab.com/nhattien.vhv)
-
-Model License:
-* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
-* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
