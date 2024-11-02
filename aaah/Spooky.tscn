@@ -38,7 +38,11 @@ height = 20.0
 
 [sub_resource type="Environment" id="Environment_bsqtu"]
 background_mode = 1
+background_color = Color(0.114897, 0.114897, 0.114897, 1)
 ambient_light_color = Color(1, 1, 1, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.075
+volumetric_fog_albedo = Color(0.237539, 0.237539, 0.237539, 1)
 
 [sub_resource type="Theme" id="Theme_yirpe"]
 default_font_size = 40
@@ -60,11 +64,21 @@ shape = SubResource("ConcavePolygonShape3D_87s5t")
 
 [node name="Moon" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.302, 50, -106.891)
-visible = false
+gi_mode = 2
 mesh = SubResource("SphereMesh_ji467")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D/Moon"]
 transform = Transform3D(0.683013, -0.258819, -0.683013, -0.183013, -0.965926, 0.183013, -0.707107, 4.02303e-08, -0.707107, -0.301956, -1, -1.1087)
+light_color = Color(0.894922, 0.894922, 0.894922, 1)
+light_energy = 0.6
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
+transform = Transform3D(-0.609404, -0.183079, -0.771433, -0.00339415, -0.972364, 0.233445, -0.792852, 0.144881, 0.591941, -133.211, 33.1728, 89.5799)
+light_energy = 0.2
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Node3D"]
+transform = Transform3D(-0.787396, 0.177607, 0.590308, -0.00334685, -0.958814, 0.284015, 0.616439, 0.221657, 0.75556, 77.8103, 33.1728, 89.5799)
+light_energy = 0.2
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Node3D"]
 
