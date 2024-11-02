@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://b2rij5rxbh6fu"]
+[gd_scene load_steps=4 format=3 uid="uid://b2rij5rxbh6fu"]
 
-[node name="Player" type="Node3D"]
+[ext_resource type="Script" path="res://player.gd" id="1_3ljr4"]
+[ext_resource type="PackedScene" uid="uid://bcaad4k1o2xpq" path="res://Skeleton/Skeleton.fbx" id="1_g80hl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i4v8e"]
+radius = 0.28
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_3ljr4")
+
+[node name="Skeleton" parent="." instance=ExtResource("1_g80hl")]
+transform = Transform3D(0.255, 0, 0, 0, 0.255, 0, 0, 0, 0.255, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.9, 0.1)
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_i4v8e")
