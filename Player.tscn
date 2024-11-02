@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2rij5rxbh6fu"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_3ljr4"]
+[ext_resource type="PackedScene" uid="uid://bcaad4k1o2xpq" path="res://Skeleton/Skeleton.fbx" id="1_g80hl"]
+[ext_resource type="PackedScene" uid="uid://dk704y0t8j58s" path="res://nlaw_low_poly/scene.gltf" id="3_pu55e"]
+[ext_resource type="PackedScene" uid="uid://772v328gd7tt" path="res://low-poly_pumpkin/scene.gltf" id="4_tcbhv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i4v8e"]
+radius = 0.28
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_3ljr4")
+
+[node name="Skeleton" parent="." instance=ExtResource("1_g80hl")]
+transform = Transform3D(0.255, 0, 0, 0, 0.255, 0, 0, 0, 0.255, 0, 0, 0)
+
+[node name="Sketchfab_Scene2" parent="Skeleton" instance=ExtResource("3_pu55e")]
+transform = Transform3D(-0.437, 0, -3.82037e-08, 0, 0.437, 0, 3.82037e-08, 0, -0.437, 0.478944, 3.05589, -0.191487)
+
+[node name="Sketchfab_Scene" parent="Skeleton" instance=ExtResource("4_tcbhv")]
+transform = Transform3D(77.837, 0, 0, 0, -3.40236e-06, -77.837, 0, 77.837, -3.40236e-06, 1.64912, 4.78331, 2.30403)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.9, 0.1)
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_i4v8e")

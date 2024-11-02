@@ -1,0 +1,8 @@
+Model Information:
+* title:	Low-Poly Pumpkin
+* source:	https://sketchfab.com/3d-models/low-poly-pumpkin-f908eaecdfa24ebbb3c02ff1712805c5
+* author:	Jawlex (https://sketchfab.com/jawlex3d)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

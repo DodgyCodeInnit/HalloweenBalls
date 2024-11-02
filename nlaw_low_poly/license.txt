@@ -1,0 +1,8 @@
+Model Information:
+* title:	NLAW Low Poly
+* source:	https://sketchfab.com/3d-models/nlaw-low-poly-4b8202fbbc2744a2a239502ea4fb9667
+* author:	WULF (https://sketchfab.com/vovikbobylev)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
