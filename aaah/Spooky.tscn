@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://3kc4eoqgxevt"]
+[gd_scene load_steps=14 format=3 uid="uid://3kc4eoqgxevt"]
 
-[ext_resource type="PackedScene" uid="uid://b2rij5rxbh6fu" path="res://Player.tscn" id="1_vvr5x"]
-[ext_resource type="Script" path="res://control.gd" id="2_l08oe"]
+[ext_resource type="Script" path="res://game.gd" id="1_cdxn2"]
 [ext_resource type="Texture2D" uid="uid://dvpx6mr8pilpu" path="res://Titlescream Assets/Screenshot from 2024-11-02 16-16-45.png" id="3_r1pmr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nmhtu"]
@@ -32,8 +31,6 @@ material = SubResource("StandardMaterial3D_ofc3i")
 radius = 10.0
 height = 20.0
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ukmc4"]
-
 [sub_resource type="BoxMesh" id="BoxMesh_uob5t"]
 
 [sub_resource type="Environment" id="Environment_bsqtu"]
@@ -50,7 +47,8 @@ default_font_size = 40
 [sub_resource type="Theme" id="Theme_1ig5c"]
 default_font_size = 14
 
-[node name="Node" type="Node"]
+[node name="Multiplayer" type="Node"]
+script = ExtResource("1_cdxn2")
 
 [node name="Node3D" type="Node3D" parent="."]
 
@@ -80,14 +78,6 @@ light_energy = 0.2
 transform = Transform3D(-0.787396, 0.177607, 0.590308, -0.00334685, -0.958814, 0.284015, 0.616439, 0.221657, 0.75556, 77.8103, 33.1728, 89.5799)
 light_energy = 0.2
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Node3D"]
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Node3D"]
-replication_config = SubResource("SceneReplicationConfig_ukmc4")
-
-[node name="Player" parent="Node3D" instance=ExtResource("1_vvr5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96, 0)
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.513185, 4.6153)
 mesh = SubResource("BoxMesh_uob5t")
@@ -103,6 +93,12 @@ mesh = SubResource("BoxMesh_uob5t")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D"]
 environment = SubResource("Environment_bsqtu")
 
+[node name="Players" type="Node3D" parent="Node3D"]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Node3D/Players"]
+_spawnable_scenes = PackedStringArray("res://Player.tscn")
+spawn_path = NodePath("..")
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -110,7 +106,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_l08oe")
 
 [node name="ScreenshotFrom2024-11-0216-16-45" type="Sprite2D" parent="Control"]
 position = Vector2(593, 275)
@@ -129,20 +124,24 @@ grow_horizontal = 2
 theme = SubResource("Theme_yirpe")
 text = "On the day I was born......"
 
-[node name="Button" type="Button" parent="Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.51
-anchor_top = 0.817
-anchor_right = 0.51
-anchor_bottom = 0.817
-offset_left = -69.5201
-offset_top = -15.416
-offset_right = 69.4799
-offset_bottom = 15.584
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_1ig5c")
-text = "Wannanananaaa"
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
+[node name="Host" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_1ig5c")
+theme_override_constants/h_separation = 0
+text = "Host"
+
+[node name="Connect" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "Connect"
+
+[node name="Remote" type="LineEdit" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "127.0.0.1"
+
+[connection signal="pressed" from="Control/HBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Connect" to="." method="_on_connect_pressed"]

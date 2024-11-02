@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2rij5rxbh6fu"]
+[gd_scene load_steps=8 format=3 uid="uid://b2rij5rxbh6fu"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_3ljr4"]
 [ext_resource type="PackedScene" uid="uid://bcaad4k1o2xpq" path="res://Skeleton/Skeleton.fbx" id="1_g80hl"]
+[ext_resource type="PackedScene" uid="uid://bxh7ari8f7em1" path="res://conial_hat_2/scene.gltf" id="3_l46xq"]
+[ext_resource type="PackedScene" uid="uid://drehnspq6fnfq" path="res://floating-ghost-t-shirt-model/source/TestWalk.fbx" id="4_e2pu7"]
+[ext_resource type="Script" path="res://multiplayer_synchronizer.gd" id="5_37nf8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i4v8e"]
 radius = 0.28
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ugsry"]
+properties/0/path = NodePath("PlayerInput:direction")
+properties/0/spawn = false
+properties/0/replication_mode = 1
+properties/1/path = NodePath("PlayerInput:look")
+properties/1/spawn = false
+properties/1/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_3ljr4")
@@ -14,7 +25,16 @@ transform = Transform3D(0.255, 0, 0, 0, 0.255, 0, 0, 0, 0.255, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.9, 0.1)
-current = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_i4v8e")
+
+[node name="Hat" parent="." instance=ExtResource("3_l46xq")]
+transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, -0.230538, 1.12154, 0.253201)
+
+[node name="Shirt" parent="." instance=ExtResource("4_e2pu7")]
+transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, -0.00211179, -0.932469, 0.0200632)
+
+[node name="PlayerInput" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ugsry")
+script = ExtResource("5_37nf8")
