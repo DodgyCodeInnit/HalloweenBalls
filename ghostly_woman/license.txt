@@ -1,8 +1,0 @@
-Model Information:
-* title:	Ghostly Woman
-* source:	https://sketchfab.com/3d-models/ghostly-woman-aadad446802e4f35899730d72c2f968d
-* author:	John Doe (https://sketchfab.com/JonnyDoe)
-
-Model License:
-* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
-* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
